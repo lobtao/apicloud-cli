@@ -1,0 +1,43 @@
+{
+  "name": "apicloud-cli",
+  "version": "0.0.2",
+  "description": "APICloud命令行工具",
+  "main": "./lib/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apicloudcom/apicloud-cli.git"
+  },
+  "keywords": [
+    "APICloud",
+    "命令行",
+    "真机同步",
+    "日志输出",
+    "wifi"
+  ],
+  "bin": {
+    "apicloud": "./lib/cli.js"
+  },
+  "author": "APICloud",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/apicloudcom/apicloud-cli/issues"
+  },
+  "homepage": "https://github.com/apicloudcom/apicloud-cli#readme",
+  "dependencies": {
+    "apicloud-tools-core": "0.0.2",
+    "minimist": "^1.2.0",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-preset-latest": "^6.16.0",
+    "json-loader": "^0.5.4",
+    "webpack": "^1.13.3",
+    "source-map-support": "^0.4.6"
+  }
+}
