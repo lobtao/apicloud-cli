@@ -13,15 +13,15 @@ try{
   delete argv._
   /* workspace,project和file,可以是相对路径或绝对路径 ==> 入口处兼容转换为绝对路径. */
   if(argv.workspace){
-    argv.workspace = path.resolve(argv.workspace)
+    argv.workspace = path.resolve(argv.workspace+"")
   }
 
   if(argv.project){
-    argv.project = path.resolve(argv.project)
+    argv.project = path.resolve(argv.project+"")
   }
 
   if(argv.file){
-    argv.file = path.resolve(argv.file)
+    argv.file = path.resolve(argv.file+"")
   }
 
   CLI[method](argv)
