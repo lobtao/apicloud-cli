@@ -1,6 +1,6 @@
 {
   "name": "apicloud-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "APICloud命令行工具",
   "main": "./lib/cli.js",
   "scripts": {
