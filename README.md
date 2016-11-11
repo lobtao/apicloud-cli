@@ -16,34 +16,6 @@
 npm install -g apicloud-cli
 ```
 
-### 手动安装
-
-考虑到cli工具的特殊性,下面给出完整的安装方法,需要先下载免安装包: [apicloud-cli](http://7y2xqk.com1.z0.glb.clouddn.com/apicloud/6ced29bbac804c3910064c3a38e844fe.zip)
-
-#### windows 手动安装
-
-解压后,把 *windows\node_modules* 中的文件复制到
-*C:\Users\用户名\AppData\Roaming\npm\node_modules* 目录;
-把 *windows\apicloud* 和 *windows\apicloud.cmd* 复制到
-C:\Users\用户名\AppData\Roaming\npm 目录,
-重启 命令行,输入 **apicloud help**,会出现命令提示;
-
-
-#### Mac 手动安装:
-
-在终端中,执行以下命令:
-
-```shell
-# 建立软连接, path/to/apicloud-cli/cli.js 表示 解压后apicloud-cli/cli.js 的绝对路径
-# /usr/local/bin/apicloud 不要改,就要这么写
-ln -s path/to/apicloud-cli/cli.js /usr/local/bin/apicloud
-
-# 赋予可执行权限
-chmod a+x /usr/local/bin/apicloud
-```
-
-然后重启终端/命令行,输入 **apicloud help** 即可查看命令各种提示
-
 ## apicloud-cli 指令集
 
 ```
