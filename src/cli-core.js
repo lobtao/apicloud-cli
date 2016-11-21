@@ -1,13 +1,19 @@
 const APICloud = require("apicloud-tools-core")
 const {exec} = require('child_process')
 const WebSocket = require('ws')
+const fs = require("fs")
+const path = require('path')
 
 const SOCKET_IP = "localhost"
 const CLI_COMMAND = - 1
 
 const cli = {
   version({}){
-    console.log(`apicloud-cli: ${require('../package.json').version}`)
+    let packageJSONPath = path.resolve(__dirname,"../package.json")
+    fs.readFile(packageJSONPath, 'utf8', (err,data)=>{
+      let packageJSON = JSON.parse(data)
+      console.log(`apicloud-cli: ${packageJSON.version}`)
+    })
   },
   help({}){
     let info = `
