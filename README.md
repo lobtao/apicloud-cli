@@ -1,39 +1,65 @@
 # apicloud-cli 工具使用说明
 
-## 开源地址
-
-[https://github.com/apicloudcom/apicloud-cli](https://github.com/apicloudcom/apicloud-cli)
-
 ## 简介
-
-[APICloud](http://www.apicloud.com/) 提供的一款适用于终端/命令行的 *APICloud* 平台开发工具,基于 [apicloud-tools-core 核心开发库](https://www.npmjs.com/package/apicloud-tools-core) 开发,包含新建页面模板,新建应用模板,WiFi同步等核心功能等核心库已有功能.
 
 * 操作系统: Mac/Windows/Linux
 * nodejs环境: node 4+
 * 开源协议: GPL-3.0
 
+[APICloud](http://www.apicloud.com/) 提供的一款适用于终端/命令行的 *APICloud* 平台开发工具,基于 [apicloud-tools-core 核心开发库](https://www.npmjs.com/package/apicloud-tools-core) 开发,包含新建页面模板,新建应用模板,WiFi同步等核心功能等核心库已有功能.
+
+开源地址: [https://github.com/apicloudcom/apicloud-cli](https://github.com/apicloudcom/apicloud-cli)
+
 ## 安装
 
-### 在线安装
+### 稳定版安装:
 
-```shell
+```sh
 npm install -g apicloud-cli
 ```
+
+### 体验版安装(或许有彩蛋):
+
+```sh
+npm install -g apicloud-cli@dev
+```
+
+## 开启 es6 支持
+
+```sh
+apicloud polyfill --project ./
+```
+
+从 **0.2.0** 版本开始, *apicloud-cli* 支持对 APICloud 项目进行 *polyfill* 操作,以直接在项目中使用 es6 等最新语法,优雅地进行模块化的混合App开发.详见: [apicloud-polyfill](https://www.npmjs.com/package/apicloud-polyfill)
+
+## 使用自定义指令
+
+从 **0.2.0** 版本开始, *apicloud-cli* 新建 **run** 指令,用于执行用户自定义的指令.项目本身必须进行 polyfill 操作后,才可使用此特性.内部实现基于 npm 包配置文件的 scripts 属性,详见: [Using a package.json](https://docs.npmjs.com/getting-started/using-a-package.json)
 
 ## apicloud-cli 指令集
 
 ```
-***************** APICloud 通用命令行开发工具 ***********************
 
-  命令格式: apicloud 方法名 --参数名1 参数值2 --参数名2 参数值2
+  ***************** APICloud 通用命令行开发工具 ***********************
+
+  命令格式
+
+  执行全局方法:
+  apicloud 方法名 --参数名1 参数值2 --参数名2 参数值2
+
+  执行项目相关的方法:
+  apiclud run 方法名
 
   注意:
-  1.参数中的workspace,project和file,可以是相对路径或绝对路径;
-  2.支持的应用模板有: default,bottom,home,slide ;
-  3.支持的页面模板有: page001,page002,page003,page004,page005,page006,page007,page008,page009,page010,page011,page012,page013,page014,page015,page016,page017,page018,page019,page020,page021,page022,page023,page024,page025,page026 ;
-  4.port 为wifi服务启动时的端口号;
+  1. 参数中的workspace,project和file,可以是相对路径或绝对路径
+  2. 支持的应用模板有: default,bottom,home,slide
+  3. 支持的页面模板有: page001,page002,page003,page004,page005,page006,page007,page008,page009,page010,page011,page012,page013,page014,page015,page016,page017,page018,page019,page020,page021,page022,page023,page024,page025,page026
+  4. port 为wifi服务启动时的端口号
+  5. 使用 apicloud run 执行项目相关的方法时,应先cd切换到项目根目录
+  6. 项目相关的方法,仅在项目有效 polyfill 化以后,才有效
 
-  命令示例
+  // ============================================================
+  全局命令示例
 
   显示版本号:
   apicloud version 或 apicloud -v 或 apicloud --version
@@ -67,6 +93,28 @@ npm install -g apicloud-cli
 
   创建页面模板:
   apicloud initPage --name first_page --template page001 --project ./
+
+  开启 es6 支持:
+  apicloud polyfill --project ./
+
+  // ============================================================
+
+  项目相关方法示例
+
+  wifi 增量真机同步:
+  apicloud run sync
+
+  预编译 es6/es7 js文件:
+  apicloud run bundle
+
+  预编译 es6/es7 js文件,然后进行wifi 增量真机同步:
+  apicloud run bundle_s
+
+  以debug模式,预编译 es6/es7 js文件,此时会产生对应的 *.map.js 文件,便于在浏览器中调试:
+  apicloud run bundle_d
+
+  以debug模式,预编译 es6/es7 js文件,然后进行wifi 增量真机同步:
+  apicloud run bundle_d_s
 ```
 
 ## 注意

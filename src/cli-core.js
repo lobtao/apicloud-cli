@@ -3,6 +3,9 @@ const {exec} = require('child_process')
 const WebSocket = require('ws')
 const fs = require("fs")
 const path = require('path')
+const spawn = require('cross-spawn');
+
+import Polyfill from "apicloud-polyfill"
 
 const SOCKET_IP = "localhost"
 const CLI_COMMAND = - 1
@@ -19,15 +22,24 @@ const cli = {
     let info = `
   ***************** APICloud 通用命令行开发工具 ***********************
 
-  命令格式: apicloud 方法名 --参数名1 参数值2 --参数名2 参数值2
+  命令格式
+
+  执行全局方法:
+  apicloud 方法名 --参数名1 参数值2 --参数名2 参数值2
+
+  执行项目相关的方法:
+  apiclud run 方法名
 
   注意:
-  1.参数中的workspace,project和file,可以是相对路径或绝对路径;
-  2.支持的应用模板有: ${Object.keys(APICloud.appTemplateConfig())} ;
-  3.支持的页面模板有: ${Object.keys(APICloud.fileTemplateConfig())} ;
-  4.port 为wifi服务启动时的端口号;
+  1. 参数中的workspace,project和file,可以是相对路径或绝对路径
+  2. 支持的应用模板有: ${Object.keys(APICloud.appTemplateConfig())}
+  3. 支持的页面模板有: ${Object.keys(APICloud.fileTemplateConfig())}
+  4. port 为wifi服务启动时的端口号
+  5. 使用 apicloud run 执行项目相关的方法时,应先cd切换到项目根目录
+  6. 项目相关的方法,仅在项目有效 polyfill 化以后,才有效
 
-  命令示例
+  // ============================================================
+  全局命令示例
 
   显示版本号:
   apicloud version 或 apicloud -v 或 apicloud --version
@@ -61,6 +73,28 @@ const cli = {
 
   创建页面模板:
   apicloud initPage --name first_page --template page001 --project ./
+
+  开启 es6 支持:
+  apicloud polyfill --project ./
+
+  // ============================================================
+
+  项目相关方法示例
+
+  wifi 增量真机同步:
+  apicloud run sync
+
+  预编译 es6/es7 js文件:
+  apicloud run bundle
+
+  预编译 es6/es7 js文件,然后进行wifi 增量真机同步:
+  apicloud run bundle_s
+
+  以debug模式,预编译 es6/es7 js文件,此时会产生对应的 *.map.js 文件,便于在浏览器中调试:
+  apicloud run bundle_d
+
+  以debug模式,预编译 es6/es7 js文件,然后进行wifi 增量真机同步:
+  apicloud run bundle_d_s
     `
 
     console.log(info)
@@ -167,6 +201,14 @@ const cli = {
       name:name,template:template,output:project
     })
   },
+  polyfill({project="./"}){
+    Polyfill({project:project})
+  },
+  run({argv}){
+    argv.shift()
+    argv.shift()
+    spawn('npm', argv,{stdio:"inherit"})
+  }
 }
 
 module.exports = cli
