@@ -1,6 +1,6 @@
 {
-  "name": "apicloud-cli",
-  "version": "0.2.0",
+  "name": "ys-apicloud-cli",
+  "version": "0.2.1",
   "description": "APICloud 命令行开发工具",
   "main": "./lib/cli.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apicloudcom/apicloud-cli.git"
+    "url": "git+https://github.com/lobtao/apicloud-cli.git"
   },
   "keywords": [
     "APICloud",
@@ -28,9 +28,9 @@
   "author": "APICloud",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/apicloudcom/apicloud-cli/issues"
+    "url": "https://github.com/lobtao/apicloud-cli/issues"
   },
-  "homepage": "https://github.com/apicloudcom/apicloud-cli#readme",
+  "homepage": "https://github.com/lobtao/apicloud-cli#readme",
   "dependencies": {
     "apicloud-polyfill": "^0.1.0",
     "apicloud-tools-core": "^0.1.0",

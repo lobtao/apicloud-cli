@@ -1,4 +1,4 @@
-# apicloud-cli 工具使用说明
+# ys-apicloud-cli 工具使用说明
 
 ## 简介
 
@@ -8,20 +8,20 @@
 
 [APICloud](http://www.apicloud.com/) 提供的一款适用于终端/命令行的 *APICloud* 平台开发工具,基于 [apicloud-tools-core 核心开发库](https://www.npmjs.com/package/apicloud-tools-core) 开发,包含新建页面模板,新建应用模板,WiFi同步等核心功能等核心库已有功能.
 
-开源地址: [https://github.com/apicloudcom/apicloud-cli](https://github.com/apicloudcom/apicloud-cli)
+开源地址: [https://github.com/lobtao/ys-apicloud-cli](https://github.com/lobtao/apicloud-cli)
 
 ## 安装
 
 ### 稳定版安装:
 
 ```sh
-npm install -g apicloud-cli
+npm install -g ys-apicloud-cli
 ```
 
 ### 体验版安装(或许有彩蛋):
 
 ```sh
-npm install -g apicloud-cli@dev
+npm install -g ys-apicloud-cli@dev
 ```
 
 ## 开启 es6 支持
