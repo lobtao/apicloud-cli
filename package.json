@@ -1,6 +1,6 @@
 {
   "name": "ys-apicloud-cli",
-  "version": "0.2.1",
+  "version": "0.2.0",
   "description": "APICloud 命令行开发工具",
   "main": "./lib/cli.js",
   "scripts": {
