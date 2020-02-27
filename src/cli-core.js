@@ -187,7 +187,8 @@ const cli = {
       let receiveMsg = JSON.parse(message)
       const {payload,command} = receiveMsg
       if(CLI_COMMAND === command){
-        console.log(JSON.stringify(payload))
+        // console.log(JSON.stringify(payload))
+        console.log('[WiFiLog] ' +i.content)
       }
     })
   },
